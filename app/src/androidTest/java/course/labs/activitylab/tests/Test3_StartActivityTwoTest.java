@@ -6,11 +6,10 @@ import com.robotium.solo.Solo;
 
 import course.labs.activitylab.ActivityOne;
 
+@SuppressWarnings("ALL")
 public class Test3_StartActivityTwoTest extends ActivityInstrumentationTestCase2<ActivityOne> {
 	
 	private Solo solo;
-	private int timeout = 20000;
-	private int sleep = 1000;
 
 	public Test3_StartActivityTwoTest() {
 		super(ActivityOne.class);
@@ -29,7 +28,8 @@ public class Test3_StartActivityTwoTest extends ActivityInstrumentationTestCase2
 		
 		// ==================== Section One =====================
 		// Wait for activity: 'course.labs.activitylab.ActivityOne'
-		assertTrue("StartActivityTwoTest failed:" +
+        int timeout = 20000;
+        assertTrue("StartActivityTwoTest failed:" +
 				   "Section One:" +
 				   "ActivityOne did not load correctly",
 				   solo.waitForActivity(course.labs.activitylab.ActivityOne.class, timeout));

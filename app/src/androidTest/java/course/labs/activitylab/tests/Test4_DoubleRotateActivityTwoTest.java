@@ -2,16 +2,14 @@ package course.labs.activitylab.tests;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.robotium.solo.Condition;
 import com.robotium.solo.Solo;
 
 import course.labs.activitylab.ActivityOne;
 
+@SuppressWarnings("ALL")
 public class Test4_DoubleRotateActivityTwoTest extends ActivityInstrumentationTestCase2<ActivityOne> {
 
 	private Solo solo;
-	private int timeout = 20000;
-	private int sleep = 1000;
 
 	public Test4_DoubleRotateActivityTwoTest() {
 		super(ActivityOne.class);
@@ -25,10 +23,11 @@ public class Test4_DoubleRotateActivityTwoTest extends ActivityInstrumentationTe
 		solo.finishOpenedActivities();
 	}
 	
-	// Exectues the DoubleRotateActivityTwoTest
+	// Executes the DoubleRotateActivityTwoTest
 	public void testRun() {
 		// ==================== Section One =====================
 		// Wait for activity: 'course.labs.activitylab.ActivityOne'
+		int timeout = 20000;
 		assertTrue("DoubleRotateActivityTwoTest failed:" +
 				   "Section One:" +
 				   "ActivityOne did not load correctly",

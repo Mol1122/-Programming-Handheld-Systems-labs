@@ -6,12 +6,11 @@ import com.robotium.solo.Solo;
 
 import course.labs.activitylab.ActivityOne;
 
+@SuppressWarnings("ALL")
 public class Test2_DoubleRotateActivityOneTest extends
 		ActivityInstrumentationTestCase2<ActivityOne> {
 	
 	private Solo solo;
-	private int timeout = 20000;
-	private int sleep = 1000;
 
 	public Test2_DoubleRotateActivityOneTest() {
 		super(ActivityOne.class);
@@ -28,12 +27,14 @@ public class Test2_DoubleRotateActivityOneTest extends
 	public void testRun() {
 		// ==================== Section One =====================
 		// Wait for activity: 'course.labs.activitylab.ActivityOne'
+		int timeout = 20000;
 		assertTrue("DoubleRotateActivityOneTest failed: " +
 				   "Section One:" +
 				   "ActivityOne did not correctly load",
 				   solo.waitForActivity(course.labs.activitylab.ActivityOne.class, timeout));
-			
-		
+
+
+		int sleep = 1000;
 		solo.sleep(sleep);
 		
 		// ==================== Section Two =====================

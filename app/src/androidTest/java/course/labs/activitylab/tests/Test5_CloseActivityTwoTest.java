@@ -6,12 +6,11 @@ import com.robotium.solo.Solo;
 
 import course.labs.activitylab.ActivityOne;
 
+@SuppressWarnings("ALL")
 public class Test5_CloseActivityTwoTest extends ActivityInstrumentationTestCase2<ActivityOne> {
 	
 	private Solo solo;
-	private int timeout = 20000;
-	private int sleep = 1000;
-	
+
 	public Test5_CloseActivityTwoTest() {
 		super(ActivityOne.class);
 	}
@@ -29,7 +28,8 @@ public class Test5_CloseActivityTwoTest extends ActivityInstrumentationTestCase2
 		
 		// ==================== Section One =====================
 		// Wait for activity: 'course.labs.activitylab.ActivityOne'
-		assertTrue("CloseActivityTwoTest failed:" +
+        int timeout = 20000;
+        assertTrue("CloseActivityTwoTest failed:" +
 				   "Section One:" +
 				   "ActivityOne did not load correctly",
 				   solo.waitForActivity(course.labs.activitylab.ActivityOne.class, timeout));
@@ -51,7 +51,8 @@ public class Test5_CloseActivityTwoTest extends ActivityInstrumentationTestCase2
 		// Click on Close Activity
 		
 		solo.waitForView(course.labs.activitylab.R.id.bClose);
-		
+
+		int sleep = 1000;
 		solo.sleep(sleep);
 		
 		solo.clickOnView(solo.getView(course.labs.activitylab.R.id.bClose));
