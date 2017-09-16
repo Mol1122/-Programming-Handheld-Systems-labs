@@ -25,10 +25,13 @@ public class ActivityTwo extends Activity {
     // onResume()
     // You will need to increment these variables' values when their
     // corresponding lifecycle methods get called
-
+    int mycreate=0;
+    int myresume=0;
+    int myrestart=0;
+    int mystart=0;
 
     // TODO: Create variables for each of the TextViews
-
+    TextView textCreate, textRestart, textStart, textResume;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +40,11 @@ public class ActivityTwo extends Activity {
         // TODO: Assign the appropriate TextViews to the TextView variables
         // Hint: Access the TextView by calling Activity's findViewById()
         // textView1 = (TextView) findViewById(R.id.textView1);
-
+        textCreate = (TextView) findViewById(R.id.create);
+        textRestart = (TextView) findViewById(R.id.restart);
+        textStart = (TextView) findViewById(R.id.start);
+        textResume = (TextView) findViewById(R.id.resume);
+        
 
         Button closeButton = findViewById(R.id.bClose);
         closeButton.setOnClickListener(new OnClickListener() {
@@ -47,7 +54,7 @@ public class ActivityTwo extends Activity {
 
                 // TODO:
                 // This function closes Activity Two
-
+                ActivityTwo.this.finish();
 
 
             }
@@ -58,16 +65,18 @@ public class ActivityTwo extends Activity {
 
             // TODO:
             // Restore value of counters from saved state
-
+            mycreate = savedInstanceState.getInt(CREATE_KEY);
+            myrestart = savedInstanceState.getInt(RESTART_KEY);
+            myresume = savedInstanceState.getInt(RESUME_KEY);
+            mystart = savedInstanceState.getInt(START_KEY);
         }
 
         // Emit LogCat message
-
         Log.i(TAG, "Entered the onCreate() method");
-
         // TODO:
         // Update the appropriate count variable
-
+        mycreate++;
+        displayCounts();
     }
 
     // Lifecycle callback methods overrides
@@ -75,36 +84,36 @@ public class ActivityTwo extends Activity {
     @Override
     public void onStart() {
         super.onStart();
-
         // Emit LogCat message
         Log.i(TAG, "Entered the onStart() method");
 
         // TODO:
         // Update the appropriate count variable
         // Update the user interface
-
+        mystart++;
+        displayCounts();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
         // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
-
+        Log.i(TAG, "Entered the onResume() method");
         // TODO:
         // Update the appropriate count variable
-
+        myresume++;
+        displayCounts();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-
         // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
+        Log.i(TAG, "Entered the onPause() method");
     }
 
     @Override
@@ -114,45 +123,49 @@ public class ActivityTwo extends Activity {
         // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
+        Log.i(TAG, "Entered the onStop() method");
     }
 
     @Override
     public void onRestart() {
         super.onRestart();
-
         // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
-
+        Log.i(TAG, "Entered the onRestart() method");
         // TODO:
         // Update the appropriate count variable
-
+        myrestart++;
+        displayCounts();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
+        Log.i(TAG, "Entered the onDestroy() method");
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-
         // TODO:
         // Save counter state information with a collection of key-value pairs
         // 4 lines of code, one for every count variable
-
+        savedInstanceState.putInt(RESTART_KEY, myrestart);
+        savedInstanceState.putInt(RESUME_KEY, myresume);
+        savedInstanceState.putInt(START_KEY, mystart);
+        savedInstanceState.putInt(CREATE_KEY, mycreate);
     }
 
     // Updates the displayed counters
     private void displayCounts() {
-
         // TODO:
         // Update the user interface with the 4 counter variables
-        
-
+        textCreate.setText("onCreate() calls: " + mycreate);
+        textStart.setText("onStart() calls: " + mystart);
+        textRestart.setText("onRestart() calls: " + myrestart);
+        textResume.setText("onResume() calls: " + myresume);
     }
 }

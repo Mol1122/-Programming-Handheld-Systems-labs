@@ -24,10 +24,13 @@ public class ActivityOne extends Activity {
     // TODO:
     // Create counter variables for onCreate(), onRestart(), onStart() and
     // onResume()
-
+    int mycreate=0;
+    int myresume=0;
+    int myrestart=0;
+    int mystart=0;
 
     // TODO: Create variables for each of the TextViews
-
+    TextView textCreate, textRestart, textStart, textResume;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,10 @@ public class ActivityOne extends Activity {
         // TODO: Assign the appropriate TextViews to the TextView variables
         // Hint: Access the TextView by calling Activity's findViewById()
         // textView1 = (TextView) findViewById(R.id.textView1);
-
+        textCreate = (TextView) findViewById(R.id.create);
+        textRestart = (TextView) findViewById(R.id.restart);
+        textStart = (TextView) findViewById(R.id.start);
+        textResume = (TextView) findViewById(R.id.resume);
 
         Button launchActivityTwoButton = findViewById(R.id.bLaunchActivityTwo);
         launchActivityTwoButton.setOnClickListener(new OnClickListener() {
@@ -47,11 +53,10 @@ public class ActivityOne extends Activity {
                 // TODO:
                 // Launch Activity Two
                 // Hint: use Context's startActivity() method
-
                 // Create an intent stating which Activity you would like to start
-
+                Intent act2intent=new Intent(ActivityOne.this,ActivityTwo.class);
                 // Launch the Activity using the intent
-
+                startActivity(act2intent);
             }
         });
 
@@ -60,7 +65,10 @@ public class ActivityOne extends Activity {
 
             // TODO:
             // Restore value of counters from saved state
-
+            mycreate = savedInstanceState.getInt(CREATE_KEY);
+            myrestart = savedInstanceState.getInt(RESTART_KEY);
+            myresume = savedInstanceState.getInt(RESUME_KEY);
+            mystart = savedInstanceState.getInt(START_KEY);
         }
 
         // Emit LogCat message
@@ -69,7 +77,8 @@ public class ActivityOne extends Activity {
         // TODO:
         // Update the appropriate count variable
         // Update the user interface via the displayCounts() method
-
+        mycreate++;
+        displayCounts();
 
     }
 
@@ -85,7 +94,8 @@ public class ActivityOne extends Activity {
         // TODO:
         // Update the appropriate count variable
         // Update the user interface
-
+        mystart++;
+        displayCounts();
     }
 
     @Override
@@ -98,7 +108,8 @@ public class ActivityOne extends Activity {
         // TODO:
         // Update the appropriate count variable
         // Update the user interface
-
+        myresume++;
+        displayCounts();
     }
 
     @Override
@@ -108,6 +119,7 @@ public class ActivityOne extends Activity {
          // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
+        Log.i(TAG, "Entered the onPause() method");
     }
 
     @Override
@@ -117,6 +129,7 @@ public class ActivityOne extends Activity {
         // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
+        Log.i(TAG, "Entered the onStop() method");
     }
 
     @Override
@@ -126,11 +139,12 @@ public class ActivityOne extends Activity {
         // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
-
-        // TODO:
+        Log.i(TAG, "Entered the onRestart() method");
+        // cTODO:
         // Update the appropriate count variable
         // Update the user interface
-
+        myrestart++;
+        displayCounts();
     }
 
     @Override
@@ -140,13 +154,17 @@ public class ActivityOne extends Activity {
          // TODO:
         // Emit LogCat message
         // Follow the previous 2 examples provided
-
+        Log.i(TAG, "Entered the onDestroy() method");
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // TODO:
         // Save state information with a collection of key-value pairs
+        savedInstanceState.putInt(RESTART_KEY, myrestart);
+        savedInstanceState.putInt(CREATE_KEY, mycreate);
+        savedInstanceState.putInt(RESUME_KEY, myresume);
+        savedInstanceState.putInt(START_KEY, mystart);
     }
 
     // Updates the displayed counters
@@ -154,6 +172,9 @@ public class ActivityOne extends Activity {
 
         // TODO:
         // Update the user interface via the 4 counter variables
-
+        textCreate.setText("onCreate() calls: " + mycreate);
+        textStart.setText("onStart() calls: " + mystart);
+        textResume.setText("onResume() calls: " + myresume);
+        textRestart.setText("onRestart() calls: " + myrestart);
     }
 }
