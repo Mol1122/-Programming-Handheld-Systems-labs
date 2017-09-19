@@ -29,6 +29,7 @@ public class ActivityOne extends Activity {
     int myrestart=0;
     int mystart=0;
 
+    
     // TODO: Create variables for each of the TextViews
     TextView textCreate, textRestart, textStart, textResume;
 
