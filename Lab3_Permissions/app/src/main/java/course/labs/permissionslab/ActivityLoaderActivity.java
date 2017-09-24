@@ -18,12 +18,18 @@ public class ActivityLoaderActivity extends Activity {
 
 		Button startPhoneStatusButton = (Button) findViewById(R.id.start_phone_status_button);
 		// TODO - Add onClickListener to the startPhoneStatusButton to call startPhoneStatusActivity()
-
+		startPhoneStatusButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				startPhoneStatusActivity();
+			}
+		});
 	}
 
 	private void startPhoneStatusActivity() {
 		Log.i(TAG, "Entered startPhoneStatusActivity()");
 	
 		// TODO - Start the PhoneStatusActivity
+		startActivity(new Intent(this, PhoneStatusActivity.class));
 	}
 }
