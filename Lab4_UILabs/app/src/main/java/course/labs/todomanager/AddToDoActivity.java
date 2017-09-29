@@ -141,7 +141,6 @@ public class AddToDoActivity extends Activity {
 				// TODO - return data Intent and finish
 				setResult(Activity.RESULT_OK, data);
 				finish();
-
 			}
 		});
 	}
@@ -208,7 +207,7 @@ public class AddToDoActivity extends Activity {
 		}
 	}
 
-	
+
 	private Status getStatus() {
 
 		switch (mStatusRadioGroup.getCheckedRadioButtonId()) {
