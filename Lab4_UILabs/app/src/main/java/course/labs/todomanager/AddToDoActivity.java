@@ -151,6 +151,7 @@ public class AddToDoActivity extends Activity {
 		mDate = new Date();
 		mDate = new Date(mDate.getTime() + SEVEN_DAYS);
 
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(mDate);
 
