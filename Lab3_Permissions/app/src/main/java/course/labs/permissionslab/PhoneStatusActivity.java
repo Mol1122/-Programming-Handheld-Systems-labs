@@ -23,6 +23,7 @@ public class PhoneStatusActivity extends Activity {
 
 		Button getPhoneNumButton = (Button) findViewById(R.id.get_phone_number_button);
 		// TODO - Add onClickListener to the getPhoneNumButton to call loadPhoneNumber()
+<<<<<<< HEAD
 		getPhoneNumButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -38,6 +39,13 @@ public class PhoneStatusActivity extends Activity {
 				startGoToDangerousActivity();
 			}
 		});
+=======
+
+
+		Button goToDangerousActivityButton = (Button) findViewById(R.id.go_to_dangerous_activity_button);
+		// TODO - Add onClickListener to the goToDangerousActivityButton to call startGoToDangerousActivity()
+
+>>>>>>> e7929efdd3055d6ef20846d23ea91c8bd1b49178
 
 	}
 
@@ -59,7 +67,11 @@ public class PhoneStatusActivity extends Activity {
 		Log.i(TAG, "Entered startGoToDangerousActivity()");
 
 		// TODO - Start the GoToDangerousActivity
+<<<<<<< HEAD
 		startActivity(new Intent(this, GoToDangerousActivity.class));
+=======
+
+>>>>>>> e7929efdd3055d6ef20846d23ea91c8bd1b49178
 
 	}
 

@@ -26,13 +26,21 @@ public class MainActivity extends Activity implements
 			mFriendsFragment = new FriendsFragment();
 
 			//TODO 1 - add the FriendsFragment 
+<<<<<<< HEAD
 			getFragmentManager().beginTransaction().add(R.id.fragment_container, mFriendsFragment, TAG).commit();
+=======
+			
+>>>>>>> e7929efdd3055d6ef20846d23ea91c8bd1b49178
 
 
 		} else {
 
 			// Otherwise, save a reference to the FeedFragment for later use
+<<<<<<< HEAD
 			mFeedFragment = (FeedFragment) getFragmentManager().findFragmentById(R.id.feed_frag);
+=======
+
+>>>>>>> e7929efdd3055d6ef20846d23ea91c8bd1b49178
 
 		}
 
@@ -63,8 +71,14 @@ public class MainActivity extends Activity implements
 		if (!isInTwoPaneMode()) {
 
 			//TODO 2 - replace the fragment_container with the FeedFragment
+<<<<<<< HEAD
 			getFragmentManager().beginTransaction().replace(R.id.fragment_container,mFeedFragment,TAG).addToBackStack(null).commit();
 			getFragmentManager().executePendingTransactions();
+=======
+			
+			
+
+>>>>>>> e7929efdd3055d6ef20846d23ea91c8bd1b49178
 		}
 
 		// Update Twitter feed display on FriendFragment
