@@ -178,6 +178,7 @@ public class ToDoManagerActivity extends ListActivity {
 		}
 	}
 
+
 	// Save ToDoItems to file
 	private void saveItems() {
 		PrintWriter writer = null;

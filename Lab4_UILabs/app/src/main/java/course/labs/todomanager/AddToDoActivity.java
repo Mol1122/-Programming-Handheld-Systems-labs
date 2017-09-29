@@ -208,6 +208,7 @@ public class AddToDoActivity extends Activity {
 		}
 	}
 
+	
 	private Status getStatus() {
 
 		switch (mStatusRadioGroup.getCheckedRadioButtonId()) {
