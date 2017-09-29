@@ -94,7 +94,6 @@ public class AddToDoActivity extends Activity {
 
 				Log.i(TAG, "Entered cancelButton.OnClickListener.onClick()");
 
-
 			}
 		});
 
@@ -150,7 +149,7 @@ public class AddToDoActivity extends Activity {
 		// Default is current time + 7 days
 		mDate = new Date();
 		mDate = new Date(mDate.getTime() + SEVEN_DAYS);
-		
+
 		Calendar c = Calendar.getInstance();
 		c.setTime(mDate);
 
