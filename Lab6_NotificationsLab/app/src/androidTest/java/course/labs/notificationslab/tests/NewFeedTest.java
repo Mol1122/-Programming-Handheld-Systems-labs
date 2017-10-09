@@ -47,7 +47,9 @@ public class NewFeedTest extends
 		// 'course.labs.threadslab.MainActivity'
 		solo.waitForActivity(course.labs.notificationslab.MainActivity.class,
 				shortDelay);
-		
+		String msg = getActivity().getString(course.labs.notificationslab.R.string.download_in_progress_string);
+		assertFalse("'" + msg + "	' is shown!",
+				solo.searchText(msg));
 		solo.waitForView(android.R.id.list);
 		
 		final View listView = solo.getView(android.R.id.list);
