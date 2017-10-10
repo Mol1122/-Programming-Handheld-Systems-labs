@@ -83,11 +83,8 @@ public class DownloaderTaskFragment extends Fragment {
 		mCallback = null;
 	}
 
-	// TODO: Implement an AsyncTask subclass called DownLoaderTask.
-	// This class must use the downloadTweets method and the methods called inside it(currently commented
-	// out). Ultimately, it must also pass newly available data back to
-	// the hosting Activity using the DownloadFinishedListener interface.
 
+<<<<<<< HEAD
 	public class DownloaderTask extends AsyncTask<ArrayList<Integer>,Void,String[]>{
 
 		@Override
@@ -161,6 +158,67 @@ public class DownloaderTaskFragment extends Fragment {
 	// If necessary, notifies the user that the tweet downloads are
 	// complete. Sends an ordered broadcast back to the BroadcastReceiver in
 	// MainActivity to determine whether the notification is necessary.
+=======
+	public class DownloaderTask extends AsyncTask<Integer, Void, String[]> {
+
+		@Override
+		protected String[] doInBackground(Integer... resourceIDs) {
+			return downloadTweets(resourceIDs);
+		}
+
+		// Simulates downloading Twitter data from the network
+		private String[] downloadTweets(Integer resourceIDS[]) {
+			final int simulatedDelay = 2000;
+			String[] feeds = new String[resourceIDS.length];
+			boolean downLoadCompleted = false;
+
+			try {
+				for (int idx = 0; idx < resourceIDS.length; idx++) {
+					InputStream inputStream;
+					BufferedReader in;
+					try {
+						// Pretend downloading takes a long time
+						Thread.sleep(simulatedDelay);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+
+					inputStream = mContext.getResources().openRawResource(
+							resourceIDS[idx]);
+					in = new BufferedReader(new InputStreamReader(inputStream));
+
+					String readLine;
+					StringBuffer buf = new StringBuffer();
+
+					while ((readLine = in.readLine()) != null) {
+						buf.append(readLine);
+					}
+
+					feeds[idx] = buf.toString();
+
+					if (null != in) {
+						in.close();
+					}
+				}
+
+				downLoadCompleted = true;
+				saveTweetsToFile(feeds);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// Notify user that downloading has finished
+			notify(downLoadCompleted);
+
+			return feeds;
+
+		}
+
+		// If necessary, notifies the user that the tweet downloads are
+		// complete. Sends an ordered broadcast back to the BroadcastReceiver in
+		// MainActivity to determine whether the notification is necessary.
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 		private void notify(final boolean success) {
 			final Intent restartMainActivityIntent = new Intent(mContext,
@@ -177,7 +235,11 @@ public class DownloaderTaskFragment extends Fragment {
 			// active and in the foreground.
 
 			mContext.sendOrderedBroadcast(new Intent(
+<<<<<<< HEAD
 					MainActivity.DATA_REFRESHED_ACTION), null,
+=======
+							MainActivity.DATA_REFRESHED_ACTION), null,
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 					new BroadcastReceiver() {
 
 						final String failMsg = mContext
@@ -190,32 +252,51 @@ public class DownloaderTaskFragment extends Fragment {
 						@Override
 						public void onReceive(Context context, Intent intent) {
 
+<<<<<<< HEAD
 							// TODO: Check whether or not the MainActivity
 							// received the broadcast
 
 							if (getResultCode()!=MainActivity.IS_ALIVE) {
+=======
+							// TODO: Change the if condition (false) to Check whether or not the MainActivity
+							// received the broadcast
+
+							if (false) {
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 								// TODO: If not, create a PendingIntent using
 								// the
 								// restartMainActivityIntent and set its flags
 								// to FLAG_UPDATE_CURRENT
+<<<<<<< HEAD
 								Intent restartMainActivityIntent = new Intent(mContext, MainActivity.class);
 								PendingIntent pendIntent = PendingIntent.getActivity(mContext, 0, restartMainActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+=======
+
+								final PendingIntent pendingIntent = null;
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 								// Uses R.layout.custom_notification for the
 								// layout of the notification View. The xml
 								// file is in res/layout/custom_notification.xml
+<<<<<<< HEAD
 								RemoteViews mContentView = new RemoteViews(
 										mContext.getPackageName(),
 										R.layout.custom_notification);
+=======
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 
 
 								// TODO: Set the notification View's text to
 								// reflect whether the download completed
+<<<<<<< HEAD
 								// successfully (successMsg or failMsg)
 								mContentView.setTextViewText(R.id.text,success ? successMsg : failMsg);
+=======
+								// successfully
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 
 
@@ -225,6 +306,7 @@ public class DownloaderTaskFragment extends Fragment {
 								// android.R.drawable.stat_sys_warning
 								// for the small icon. You should also
 								// setAutoCancel(true).
+<<<<<<< HEAD
 								// To support API Level 26 implement the TODOs in createNotificationChannel
 								Notification.Builder notificationBuilder = new Notification.Builder(mContext)
 										.setSmallIcon(android.R.drawable.stat_sys_warning)
@@ -242,6 +324,12 @@ public class DownloaderTaskFragment extends Fragment {
 
 								Toast.makeText(mContext, notificationSentMsg,
 										Toast.LENGTH_LONG).show();
+=======
+								// To support API level 26, implement the TODOs in createNotificationChannel()
+								createNotificationChannel();
+
+								// TODO: Send the notification and create a toast with notificationSentMsg text
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 							} else {
 								Toast.makeText(mContext,
@@ -259,6 +347,7 @@ public class DownloaderTaskFragment extends Fragment {
 				// TODO: Create Notification Channel with id channelID,
 				// name R.string.channel_name
 				// and description R.string.channel_description of high importance
+<<<<<<< HEAD
 				NotificationManager notificationManager=(NotificationManager)mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 				CharSequence name = getString(R.string.channel_name);
 				String description = getString(R.string.channel_description);
@@ -276,6 +365,8 @@ public class DownloaderTaskFragment extends Fragment {
 				notificationManager.createNotificationChannel(mChannel);
 
 
+=======
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 			}
 		}
@@ -299,4 +390,22 @@ public class DownloaderTaskFragment extends Fragment {
 				}
 			}
 		}
+<<<<<<< HEAD
 }
+=======
+
+		// Pass newly available data back to hosting Activity
+		// using the DownloadFinishedListener interface
+		@Override
+		protected void onPostExecute(String[] result) {
+			super.onPostExecute(result);
+
+			if (null != mCallback) {
+				mCallback.notifyDataRefreshed(result);
+			}
+		}
+	}
+
+
+}
+>>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
