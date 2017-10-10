@@ -259,7 +259,7 @@ public class DownloaderTaskFragment extends Fragment {
 				mChannel.setDescription(description);
 				mChannel.enableLights(true);
 
-				mNotificationManager.createNotificationChannel(mChannel);
+				mNotificationManager.createNotificationChannel(mChannel); 
 			}
 		}
 		// Saves the tweets to a file
