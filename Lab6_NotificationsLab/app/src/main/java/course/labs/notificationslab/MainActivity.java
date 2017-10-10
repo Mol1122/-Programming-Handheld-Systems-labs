@@ -100,10 +100,11 @@ public class MainActivity extends Activity implements SelectionListener,
 					// Let sender know that the Intent was received
 					// by setting result code to MainActivity.IS_ALIVE
 					Log.i(TAG, "BroadcastIntent received in MainActivity");
+
 					if (isOrderedBroadcast()) {
-						Log.i(TAG, "INTENT checked that is ORDERED by mRefreshReceiver");
 						setResultCode(IS_ALIVE);
 					}
+
 
 				}
 			};
@@ -154,7 +155,10 @@ public class MainActivity extends Activity implements SelectionListener,
 		// TODO:
 		// Register the BroadcastReceiver to receive a
 		// DATA_REFRESHED_ACTION broadcast
-		registerReceiver(mRefreshReceiver, new IntentFilter(DATA_REFRESHED_ACTION));
+		IntentFilter filter = new IntentFilter(DATA_REFRESHED_ACTION);
+		filter.addCategory(Intent.CATEGORY_DEFAULT);
+		registerReceiver(mRefreshReceiver, filter);
+
 
 	}
 
