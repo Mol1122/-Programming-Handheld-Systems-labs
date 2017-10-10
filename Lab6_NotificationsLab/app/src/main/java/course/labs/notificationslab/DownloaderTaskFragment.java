@@ -84,81 +84,7 @@ public class DownloaderTaskFragment extends Fragment {
 	}
 
 
-<<<<<<< HEAD
-	public class DownloaderTask extends AsyncTask<ArrayList<Integer>,Void,String[]>{
 
-		@Override
-		protected String[] doInBackground(ArrayList<Integer>... arrayLists) {
-
-			ArrayList<Integer> data=arrayLists[0];
-			Integer[] dataArray=new Integer[data.size()];
-			for(int i=0;i<data.size();i++){
-				dataArray[i]=data.get(i);
-			}
-			return downloadTweets(dataArray);
-		}
-
-		@Override
-		protected void onPostExecute(String[] strings) {
-			mCallback.notifyDataRefreshed(strings);
-		}
-
-	}
-
-	// TODO: Uncomment this helper method and put them inside the DownLoaderTask subclass
-	// Simulates downloading Twitter data from the network
-	private String[] downloadTweets(Integer resourceIDS[]) {
-		final int simulatedDelay = 2000;
-		String[] feeds = new String[resourceIDS.length];
-		boolean downLoadCompleted = false;
-
-		try {
-			for (int idx = 0; idx < resourceIDS.length; idx++) {
-				InputStream inputStream;
-				BufferedReader in;
-				try {
-					// Pretend downloading takes a long time
-					Thread.sleep(simulatedDelay);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-				inputStream = mContext.getResources().openRawResource(
-						resourceIDS[idx]);
-				in = new BufferedReader(new InputStreamReader(inputStream));
-
-				String readLine;
-				StringBuffer buf = new StringBuffer();
-
-				while ((readLine = in.readLine()) != null) {
-					buf.append(readLine);
-				}
-
-				feeds[idx] = buf.toString();
-
-				if (null != in) {
-					in.close();
-				}
-			}
-
-			downLoadCompleted = true;
-			saveTweetsToFile(feeds);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// Notify user that downloading has finished
-		notify(downLoadCompleted);
-		return feeds;
-
-	}
-
-
-	// If necessary, notifies the user that the tweet downloads are
-	// complete. Sends an ordered broadcast back to the BroadcastReceiver in
-	// MainActivity to determine whether the notification is necessary.
-=======
 	public class DownloaderTask extends AsyncTask<Integer, Void, String[]> {
 
 		@Override
@@ -235,9 +161,7 @@ public class DownloaderTaskFragment extends Fragment {
 			// active and in the foreground.
 
 			mContext.sendOrderedBroadcast(new Intent(
-<<<<<<< HEAD
-					MainActivity.DATA_REFRESHED_ACTION), null,
-=======
+<
 							MainActivity.DATA_REFRESHED_ACTION), null,
 >>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 					new BroadcastReceiver() {
@@ -252,12 +176,7 @@ public class DownloaderTaskFragment extends Fragment {
 						@Override
 						public void onReceive(Context context, Intent intent) {
 
-<<<<<<< HEAD
-							// TODO: Check whether or not the MainActivity
-							// received the broadcast
-
-							if (getResultCode()!=MainActivity.IS_ALIVE) {
-=======
+<
 							// TODO: Change the if condition (false) to Check whether or not the MainActivity
 							// received the broadcast
 
@@ -268,11 +187,7 @@ public class DownloaderTaskFragment extends Fragment {
 								// the
 								// restartMainActivityIntent and set its flags
 								// to FLAG_UPDATE_CURRENT
-<<<<<<< HEAD
-								Intent restartMainActivityIntent = new Intent(mContext, MainActivity.class);
-								PendingIntent pendIntent = PendingIntent.getActivity(mContext, 0, restartMainActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-=======
 
 								final PendingIntent pendingIntent = null;
 >>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
@@ -280,21 +195,14 @@ public class DownloaderTaskFragment extends Fragment {
 								// Uses R.layout.custom_notification for the
 								// layout of the notification View. The xml
 								// file is in res/layout/custom_notification.xml
-<<<<<<< HEAD
-								RemoteViews mContentView = new RemoteViews(
-										mContext.getPackageName(),
-										R.layout.custom_notification);
-=======
+
 >>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 
 
 								// TODO: Set the notification View's text to
 								// reflect whether the download completed
-<<<<<<< HEAD
-								// successfully (successMsg or failMsg)
-								mContentView.setTextViewText(R.id.text,success ? successMsg : failMsg);
-=======
+
 								// successfully
 >>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
@@ -306,25 +214,7 @@ public class DownloaderTaskFragment extends Fragment {
 								// android.R.drawable.stat_sys_warning
 								// for the small icon. You should also
 								// setAutoCancel(true).
-<<<<<<< HEAD
-								// To support API Level 26 implement the TODOs in createNotificationChannel
-								Notification.Builder notificationBuilder = new Notification.Builder(mContext)
-										.setSmallIcon(android.R.drawable.stat_sys_warning)
-										.setAutoCancel(true)
-										.setContentIntent(pendIntent)
-										.setContent(mContentView);
 
-
-								createNotificationChannel();
-
-
-								// TODO: Send the notification
-								NotificationManager notificationManager=(NotificationManager)mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-								notificationManager.notify(MY_NOTIFICATION_ID,notificationBuilder.build());
-
-								Toast.makeText(mContext, notificationSentMsg,
-										Toast.LENGTH_LONG).show();
-=======
 								// To support API level 26, implement the TODOs in createNotificationChannel()
 								createNotificationChannel();
 
@@ -347,25 +237,6 @@ public class DownloaderTaskFragment extends Fragment {
 				// TODO: Create Notification Channel with id channelID,
 				// name R.string.channel_name
 				// and description R.string.channel_description of high importance
-<<<<<<< HEAD
-				NotificationManager notificationManager=(NotificationManager)mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-				CharSequence name = getString(R.string.channel_name);
-				String description = getString(R.string.channel_description);
-				int importance = NotificationManager.IMPORTANCE_HIGH;
-				NotificationChannel mChannel = new NotificationChannel(channelID, name, importance);
-
-				// Configure the notification channel.
-				mChannel.setDescription(description);
-				mChannel.enableLights(true);
-				// Sets the notification light color for notifications posted to this
-				// channel, if the device supports this feature.
-				mChannel.setLightColor(Color.RED);
-				mChannel.enableVibration(true);
-
-				notificationManager.createNotificationChannel(mChannel);
-
-
-=======
 >>>>>>> 4d5b296ab4a16c538e097246d52c762dd62b8026
 
 			}
@@ -390,9 +261,7 @@ public class DownloaderTaskFragment extends Fragment {
 				}
 			}
 		}
-<<<<<<< HEAD
-}
-=======
+
 
 		// Pass newly available data back to hosting Activity
 		// using the DownloadFinishedListener interface
