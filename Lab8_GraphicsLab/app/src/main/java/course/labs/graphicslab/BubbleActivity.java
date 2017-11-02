@@ -81,9 +81,9 @@ public class BubbleActivity extends Activity {
 				.getStreamVolume(AudioManager.STREAM_MUSIC)
 				/ mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
-		// TODO - make a new SoundPool, allowing up to 10 streams
+		mSoundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 
-		// TODO - load the sound from res/raw/bubble_pop.wav
+		mSoundID = mSoundPool.load(this, R.raw.bubble_pop, 1);
 
 	}
 
@@ -101,10 +101,9 @@ public class BubbleActivity extends Activity {
 
 	@Override
 	protected void onPause() {
-		// TODO - unload the sound resource and release the sound pool
-
-		//TODO - set the sound pool to null
-
+		mSoundPool.unload(mSoundID);
+		mSoundPool.release();
+		mSoundPool = null;
 		super.onPause();
 	}
 
@@ -139,7 +138,7 @@ public class BubbleActivity extends Activity {
 			// Radius of the Bitmap
 			mRadius = mScaledBitmapWidth / 2;
 			mRadiusSquared = mRadius * mRadius;
-			
+
 			// Adjust position to center the bubble under user's finger
 			mXPos = x - mRadius;
 			mYPos = y - mRadius;
@@ -162,9 +161,9 @@ public class BubbleActivity extends Activity {
 				mDRotate = 0;
 
 			} else {
-                
+
 				mDRotate = 0;
-                
+
 			}
 		}
 
@@ -256,9 +255,13 @@ public class BubbleActivity extends Activity {
 						// TODO - Remove the BubbleView from mFrame
 
 
-						// TODO - If the bubble was popped by user,
-						// play the popping sound
-
+						// If the bubble was popped by user,
+						// play the popping sound and Log that pop was performed
+						if (wasPopped) {
+							Log.i(TAG, "Pop!");
+							mSoundPool.play(mSoundID, mStreamVolume,
+									mStreamVolume, 1, 0, 1.0f);
+						}
 						Log.i(TAG, "Bubble removed from view!");
 					}
 				});
@@ -327,8 +330,8 @@ public class BubbleActivity extends Activity {
 		// Added bubbles should be given random locations.
 		// The bubble to delete is the most recently added bubble
 		// that is still in the frame.
-		
-		// Hint: You can get all Views in mFrame using the 
+
+		// Hint: You can get all Views in mFrame using the
 		// ViewGroup.getChildCount() method
 		switch (item.getItemId()) {
 		case R.id.menu_add_bubble:
