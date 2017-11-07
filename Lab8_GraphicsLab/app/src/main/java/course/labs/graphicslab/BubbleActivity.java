@@ -307,6 +307,7 @@ public class BubbleActivity extends Activity {
 			mXPos+=mDx;
 			mYPos+=mDy;
 
+			
 			return isOutOfView();
 
 		}
@@ -317,6 +318,7 @@ public class BubbleActivity extends Activity {
 
 			// TODO - Return true if the BubbleView is still on the screen after
 			// the move operation
+
 			if (mXPos + mDisplayWidth < 0 || mYPos + mDisplayHeight < 0)
 				return true;
 			if (mXPos > mDisplayWidth || mYPos > mDisplayHeight)
