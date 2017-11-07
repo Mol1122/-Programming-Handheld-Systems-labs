@@ -354,8 +354,8 @@ public class BubbleActivity extends Activity {
 		case R.id.menu_add_bubble:
 			Random r = new Random();
 			//make sure the bubble is in the middle part of the screen
-			float x = (float) r.nextInt(mDisplayWidth-1000)+500;
-			float y = (float) r.nextInt(mDisplayHeight-1000)+500;
+			float x = (float) r.nextInt(mDisplayWidth);
+			float y = (float) r.nextInt(mDisplayHeight);
 			BubbleView bubbleView = new BubbleView(mFrame.getContext(),x,y);
 			mFrame.addView(bubbleView);
 			bubbleView.start();
