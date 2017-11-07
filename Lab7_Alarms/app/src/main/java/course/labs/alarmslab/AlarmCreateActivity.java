@@ -3,7 +3,10 @@ package course.labs.alarmslab;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+<<<<<<< HEAD
 import android.content.Context;
+=======
+>>>>>>> 140e9a6ef7fcef4b94cff1b5a2e976e88ba453e9
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,11 +29,15 @@ public class AlarmCreateActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
         // TODO create reference to ALARM_SERVICE as well as locate necessary text views
+<<<<<<< HEAD
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		mAlarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 		mTweetTextView = (EditText) findViewById(R.id.text);
 		mDelayTextView = (EditText) findViewById(R.id.time);
+=======
+
+>>>>>>> 140e9a6ef7fcef4b94cff1b5a2e976e88ba453e9
 	}
 
 	public void set(View v) {
@@ -43,6 +50,7 @@ public class AlarmCreateActivity extends Activity {
         // Use the PendingIntent.getService() method. Be aware you will need to pass a unique value
         // for the request code (why?) as well as the flag PendingIntent.FLAG_ONE_SHOT. Why? Could
         // be possible midterm questions
+<<<<<<< HEAD
 		Intent startAlarmTweetService = new Intent(this, AlarmTweetService.class);
 		startAlarmTweetService.putExtra(TWEET_STRING, tweetText);
 
@@ -56,12 +64,27 @@ public class AlarmCreateActivity extends Activity {
         // TODO use AlarmManager set method to set Alarm
 		long alarmTime = System.currentTimeMillis() + delay;
 		mAlarmManager.set(AlarmManager.RTC, alarmTime + delay, pendingStartAlarmTweetService);
+=======
+
+
+
+
+
+		// TODO make log statement that tweet was sent to AlarmTweetService
+
+
+        // TODO use AlarmManager set method to set Alarm
+>>>>>>> 140e9a6ef7fcef4b94cff1b5a2e976e88ba453e9
 
 	}
 
 	public void clear(View v) {
         // TODO clear views
+<<<<<<< HEAD
 		mTweetTextView.setText("");
 		mDelayTextView.setText("");
+=======
+
+>>>>>>> 140e9a6ef7fcef4b94cff1b5a2e976e88ba453e9
 	}
 }
