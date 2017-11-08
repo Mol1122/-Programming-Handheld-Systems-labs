@@ -363,8 +363,13 @@ public class BubbleActivity extends Activity {
 			bubbleView.start();
 			return true;
 		case R.id.menu_delete_bubble:
-			BubbleView b = (BubbleView) mFrame.getChildAt(mFrame.getChildCount()-1);
-			b.stop(true);
+			int count = mFrame.getChildCount();
+			if (count > 0) {
+				BubbleView b = (BubbleView) mFrame.getChildAt(mFrame.getChildCount()-1);
+				if (b != null) {
+					b.stop(true);
+				}
+			}
 			return true;
 		case R.id.menu_still_mode:
 			speedMode = STILL;
