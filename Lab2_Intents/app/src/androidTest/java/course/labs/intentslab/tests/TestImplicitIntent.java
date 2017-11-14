@@ -29,6 +29,7 @@ public class TestImplicitIntent {
     private static final int LAUNCH_TIMEOUT = 5000;
     private UiDevice mDevice;
 
+
     @Before
     public void startMainActivityFromHomeScreen() {
         // Initialize UiDevice instance
