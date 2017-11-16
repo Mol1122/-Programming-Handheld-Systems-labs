@@ -4,16 +4,15 @@ buildscript {
         jcenter()
     }
     dependencies {
-<<<<<<< HEAD
         classpath 'com.android.tools.build:gradle:2.3.3'
-=======
-        classpath 'com.android.tools.build:gradle:2.2.2'
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
     }
 }
