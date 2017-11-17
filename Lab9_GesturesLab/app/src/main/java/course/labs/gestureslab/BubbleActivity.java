@@ -84,19 +84,11 @@ public class BubbleActivity extends Activity implements
 		mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.b64);
 
 		// TODO - Fetch GestureLibrary from raw
-<<<<<<< HEAD
 		mLibrary = GestureLibraries.fromRawResource(this, R.raw.gestures);
 		GestureOverlayView gestureOverlay = (GestureOverlayView) findViewById(R.id.gestures_overlay);
 
 		// TODO - Make this the target of gesture detection callbacks
 		gestureOverlay.addOnGesturePerformedListener(this);
-=======
-
-
-		GestureOverlayView gestureOverlay = (GestureOverlayView) findViewById(R.id.gestures_overlay);
-
-		// TODO - Make this the target of gesture detection callbacks
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 
 
 		// TODO - implement OnTouchListener to pass all events received by the
@@ -106,12 +98,8 @@ public class BubbleActivity extends Activity implements
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-<<<<<<< HEAD
 				Log.i(TAG,  "Inside on touch in gesture overlay");
 				return mGestureDetector.onTouchEvent(event);
-=======
-				return true || false;
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 			}
 		});
 
@@ -150,20 +138,13 @@ public class BubbleActivity extends Activity implements
 			@Override
 			public void onLoadComplete(SoundPool soundPool, int sampleId,
 									   int status) {
-<<<<<<< HEAD
 				setupGestureDetector();
-=======
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 
 			}
 		});
 
 		// TODO - Load the sound from res/raw/bubble_pop.wav
-<<<<<<< HEAD
 		mSoundID = mSoundPool.load(this, R.raw.bubble_pop, 1);
-=======
-		mSoundID = 0;
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 
 	}
 
@@ -195,7 +176,6 @@ public class BubbleActivity extends Activity implements
 						// TODO - Implement onFling actions.
 						// You can get all Views in mFrame one at a time
 						// using the ViewGroup.getChildAt() method
-<<<<<<< HEAD
 						for (int i = 0; i < mFrame.getChildCount(); i++) {
 							BubbleView child = (BubbleView) mFrame
 									.getChildAt(i);
@@ -205,16 +185,6 @@ public class BubbleActivity extends Activity implements
 						}
 
 						return true;
-=======
-
-
-
-
-
-
-
-						return true || false;
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 					}
 
 					// If a single tap intersects a BubbleView, then pop the
@@ -230,7 +200,6 @@ public class BubbleActivity extends Activity implements
 						// TODO - Implement onSingleTapConfirmed actions.
 						// You can get all Views in mFrame using the
 						// ViewGroup.getChildCount() method
-<<<<<<< HEAD
 						boolean handledByChild = false;
 
 						for (int i = 0; i < mFrame.getChildCount(); i++) {
@@ -250,28 +219,6 @@ public class BubbleActivity extends Activity implements
 							bubbleView.start();
 						}
 						return true;
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-						return true || false;
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 					}
 
 					// Good practice to override this method because all
@@ -298,11 +245,7 @@ public class BubbleActivity extends Activity implements
 	public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
 
 		// TODO - Get gesture predictions
-<<<<<<< HEAD
 		ArrayList<Prediction> predictions = mLibrary.recognize(gesture);
-=======
-		ArrayList<Prediction> predictions = null;
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 
 		if (predictions.size() > 0) {
 
@@ -317,7 +260,6 @@ public class BubbleActivity extends Activity implements
 			// matches
 			// the addTen gesture, add 10 bubbles to the screen.
 
-<<<<<<< HEAD
 			if (prediction.score >= MIN_PRED_SCORE ) {
 				Log.i(TAG, "prediction is above min");
 
@@ -338,26 +280,6 @@ public class BubbleActivity extends Activity implements
 
 		} else {
 			Log.i(TAG, "nothing happens here");
-=======
-		} else {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
 
 		}
 	}

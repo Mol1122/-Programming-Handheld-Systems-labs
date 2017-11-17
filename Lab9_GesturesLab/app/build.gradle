@@ -2,11 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 18
-<<<<<<< HEAD
-    buildToolsVersion '25.0.0'
-=======
-    buildToolsVersion "24.0.0"
->>>>>>> a458ad7fbb18623f39a821170fe796a214f5dbc1
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "course.labs.gestureslab"
