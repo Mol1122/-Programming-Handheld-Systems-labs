@@ -35,7 +35,7 @@ public class PlaceDownloaderTask extends AsyncTask<Location, Void, PlaceRecord> 
 	private boolean mHasNetwork = false;
 
 	// TODO - put your www.geonames.org account name here instead of "aporter".
-	private static String USERNAME = "aporter";
+	private static String USERNAME = "mol1122";
 
 	private HttpURLConnection mHttpUrl;
 	private WeakReference<PlaceViewActivity> mParent;
